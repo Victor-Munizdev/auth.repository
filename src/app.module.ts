@@ -1,10 +1,11 @@
-import { Module } from "@nestjs/common"
+import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common"
 import { TypeOrmModule } from "@nestjs/typeorm"
 import { AuthModule } from "./auth/auth.module"
 import { UsersModule } from "./users/users.module"
 import { VehiclesModule } from "./vehicles/vehicles.module"
 import { User } from "./users/entities/user.entity"
 import { Vehicle } from "./vehicles/entities/vehicle.entity"
+import { LoggerMiddleware } from "./shared/middlewares/logger.middlewate"
 
 @Module({
   imports: [
@@ -16,9 +17,9 @@ import { Vehicle } from "./vehicles/entities/vehicle.entity"
       password: process.env.DB_PASSWORD || "victor_muniz",
       database: process.env.DB_NAME || "victor_muniz_banco",
       entities: [User, Vehicle],
-      synchronize: true, 
+      synchronize: true,
       ssl: {
-        rejectUnauthorized: false, 
+        rejectUnauthorized: false,
       },
     }),
     AuthModule,
@@ -26,4 +27,8 @@ import { Vehicle } from "./vehicles/entities/vehicle.entity"
     VehiclesModule,
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes("*")
+  }
+}

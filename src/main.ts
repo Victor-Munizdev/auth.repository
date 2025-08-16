@@ -5,7 +5,6 @@ import { AppModule } from "./app.module"
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
 
-  // NestJS method - not a React hook
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -14,7 +13,6 @@ async function bootstrap() {
     }),
   )
 
-  // NestJS method - not a React hook
   app.enableCors()
 
   const port = process.env.PORT || 3000
