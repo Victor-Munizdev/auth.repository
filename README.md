@@ -39,8 +39,10 @@ npm install
 # Criar arquivo .env com as variáveis de ambiente
  .env.example 
 
-npm run start:dev
+npm r
+un start:dev
 
+```bash
 ## Exemplos de Requisições
 ` Criar usuário
 POST /users
