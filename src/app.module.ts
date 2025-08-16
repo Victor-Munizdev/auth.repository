@@ -16,9 +16,9 @@ import { Vehicle } from "./vehicles/entities/vehicle.entity"
       password: process.env.DB_PASSWORD || "victor_muniz",
       database: process.env.DB_NAME || "victor_muniz_banco",
       entities: [User, Vehicle],
-      synchronize: true, // Apenas para desenvolvimento
+      synchronize: true, 
       ssl: {
-        rejectUnauthorized: false, // Para conexões Railway
+        rejectUnauthorized: false, 
       },
     }),
     AuthModule,

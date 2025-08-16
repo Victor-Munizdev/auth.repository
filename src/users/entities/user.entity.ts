@@ -1,34 +1,31 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm"
-import { Exclude } from "class-transformer"
-import { Vehicle } from "../../vehicles/entities/vehicle.entity"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
+import { Exclude } from "class-transformer";
+import { Vehicle } from "../../vehicles/entities/vehicle.entity";
 
 @Entity("usuarios")
 export class User {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column({ unique: true })
-  email: string
+  email: string;
 
   @Column()
-  nome: string
+  nome: string;
 
   @Column()
-  @Exclude() // Exclui a senha das respostas JSON
-  senha: string
+  @Exclude()
+  senha: string;
 
   @Column({ default: "usuario" })
-  role: string
+  role: string;
 
-  @OneToMany(
-    () => Vehicle,
-    (vehicle) => vehicle.owner,
-  )
-  vehicles: Vehicle[]
+  @OneToMany(() => Vehicle, (vehicle) => vehicle.owner)
+  vehicles: Vehicle[];
 
   @CreateDateColumn({ name: "criado_em" })
-  criadoEm: Date
+  criadoEm: Date;
 
   @UpdateDateColumn({ name: "atualizado_em" })
-  atualizadoEm: Date
+  atualizadoEm: Date;
 }

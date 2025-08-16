@@ -1,8 +1,4 @@
--- Atualizando dados de exemplo para usar tabelas e campos em português
--- Script para inserir dados de exemplo
--- Execute após criar as tabelas
-
--- Inserir usuário de exemplo (senha: 123456)
+--  usuário de exemplo (senha: 123456)
 INSERT INTO usuarios (email, nome, senha, role) VALUES 
 ('admin@test.com', 'Administrador', '$2b$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin'),
 ('user@test.com', 'Usuário Teste', '$2b$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'usuario')
